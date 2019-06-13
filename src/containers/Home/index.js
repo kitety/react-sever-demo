@@ -1,9 +1,14 @@
-// import React from "react";  =>esModule
-const React = require("react"); //=>commonjs
+import React from "react"; //=>esModule
+// const React = require("react"); //=>commonjs
 
-const Home = () => {
-  return <div>Home</div>;
-};
-module.exports = {
-  default: Home
-};
+export default function Home() {
+  return (
+    <div>
+      <div>Welcome To Home</div>
+      <button onClick={()=>{alert(1212)}}>Click</button>
+    </div>
+  );
+}
+// module.exports = {
+//   default: Home
+// };
