@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <div>Welcome To Home</div>
-      <button onClick={()=>{alert(1212)}}>Click</button>
+      <button onClick={()=>{console.log(new Date())}}>Click</button>
     </div>
   );
 }

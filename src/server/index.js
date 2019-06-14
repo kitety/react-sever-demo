@@ -5,7 +5,7 @@ import React from "react";
 // 服务器渲染
 import { renderToString } from "react-dom/server";
 // const Home = require("./containers/Home/index");
-import Home from "./containers/Home";
+import Home from "../containers/Home";
 
 const app = express();
 // 可以以设置路由，但是很多的话推荐设置静态资源
