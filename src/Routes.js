@@ -3,10 +3,20 @@ import React from "react";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    component: Home,
+    loadData: Home.loadData,
+    key: "home"
+  },
+  {
+    path: "/login",
+    exact: true,
+    component: Login,
+    key: "login"
+  }
+];
 
-export default (
-  <div>
-    <Route path="/" exact component={Home} />
-    <Route path="/login" exact component={Login} />
-  </div>
-);
+export default routes;

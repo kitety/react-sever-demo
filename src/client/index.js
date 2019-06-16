@@ -1,20 +1,20 @@
 import React from "react";
 import ReactDom from "react-dom";
-import Home from "../containers/Home";
-import { BrowserRouter } from "react-router-dom";
-import Routes from "../Routes";
-import { createStore } from "redux";
+import { BrowserRouter, Route } from "react-router-dom";
+import routes from "../Routes";
 import { Provider } from "react-redux";
+import getStore from "../store";
 
-
-const reducer = (state = { name: "Tom" }, action) => {
-  return state;
-};
-const store = createStore(reducer);
 const App = () => {
   return (
-    <Provider store={store}>
-      <BrowserRouter>{Routes}</BrowserRouter>
+    <Provider store={getStore()}>
+      <BrowserRouter>
+        <div>
+          {routes.map(route => (
+            <Route {...route} key={route.path} />
+          ))}
+        </div>
+      </BrowserRouter>
     </Provider>
   );
 };

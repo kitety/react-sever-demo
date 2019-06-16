@@ -1,0 +1,1 @@
+export const GET_NEWS_LIST = "HOME/GET_NEWS_LIST";
