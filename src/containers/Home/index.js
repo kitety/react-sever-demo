@@ -1,14 +1,34 @@
 import React from "react"; //=>esModule
-// const React = require("react"); //=>commonjs
+import Header from "../../components/Header";
+import { connect } from "react-redux";
 
-export default function Home() {
+function Home(props) {
   return (
     <div>
-      <div>Welcome To Home</div>
-      <button onClick={()=>{console.log(new Date())}}>Click</button>
+      <Header />
+      <div>{props.name},Welcome To Home</div>
+      <button
+        onClick={() => {
+          console.log(new Date());
+        }}
+      >
+        Click
+      </button>
     </div>
   );
 }
+const mapStateToProps = (state, ownProps) => {
+  return {
+    name: state.name
+  };
+};
+export default connect(
+  mapStateToProps,
+  null
+)(Home);
+/**
+// const React = require("react"); //=>commonjs
 // module.exports = {
 //   default: Home
 // };
+ */
