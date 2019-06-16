@@ -16,25 +16,28 @@ class Home extends Component {
       <div>
         <Header />
         <div>{this.props.name},Welcome To Home</div>
-        {this.props.list.length > 0 && this.getList()}
-        <button
-          onClick={() => {
-            console.log(new Date());
-          }}
-        >
-          Click
-        </button>
+         {this.props.list.length > 0 && this.getList()}
+        <div>
+          <button
+            onClick={() => {
+              console.log(new Date());
+            }}
+          >
+            Click
+          </button>
+        </div>
       </div>
     );
   }
   // 只会在客户端渲染的时候被执行，ssr的时候不会执行
   componentDidMount() {
-    // this.props.getNewsList();
+    if (!this.props.list.length) {
+      this.props.getNewsList();
+    }
   }
   static loadData = store => {
-    return store.dispatch(homeActions.getNewsLIst());
-    // this.props.getNewsList();
     // 这个函数在服务器端渲染之前路有需要的数据加载好
+    return store.dispatch(homeActions.getNewsLIst());
   };
 }
 const mapStateToProps = (state, ownProps) => {
