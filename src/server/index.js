@@ -32,16 +32,16 @@ app.get("*", (req, res) => {
   // render(req, res)
   const store = getStore();
   // 根据路由的路径添加数据
-  // const promises = [];
-  // const matchedRoutes = matchRoutes(routes, req.path);
-  // matchedRoutes.forEach(item => {
-  //   if (item.route.loadData) {
-  //     promises.push(item.route.loadData(store));
-  //   }
-  // });
-  // Promise.all(promises).then(() => {
-  res.send(render(req, store, routes));
-  // })
+  const promises = [];
+  const matchedRoutes = matchRoutes(routes, req.path);
+  matchedRoutes.forEach(item => {
+    if (item.route.loadData) {
+      promises.push(item.route.loadData(store));
+    }
+  });
+  Promise.all(promises).then(() => {
+    res.send(render(req, store, routes));
+  });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

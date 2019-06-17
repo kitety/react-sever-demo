@@ -32,12 +32,14 @@ class Home extends Component {
   // 只会在客户端渲染的时候被执行，ssr的时候不会执行
   componentDidMount() {
     if (!this.props.list.length) {
-      this.props.getNewsList();
+      // client运行
+      this.props.getNewsList(false);
     }
   }
   static loadData = store => {
     // 这个函数在服务器端渲染之前路有需要的数据加载好
-    return store.dispatch(homeActions.getNewsLIst());
+    // true 是在server运行的
+    return store.dispatch(homeActions.getNewsLIst(true));
   };
 }
 const mapStateToProps = (state, ownProps) => {
