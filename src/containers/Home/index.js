@@ -33,13 +33,13 @@ class Home extends Component {
   componentDidMount() {
     if (!this.props.list.length) {
       // client运行
-      this.props.getNewsList(false);
+      this.props.getNewsList();
     }
   }
   static loadData = store => {
     // 这个函数在服务器端渲染之前路有需要的数据加载好
     // true 是在server运行的
-    return store.dispatch(homeActions.getNewsLIst(true));
+    return store.dispatch(homeActions.getNewsLIst());
   };
 }
 const mapStateToProps = (state, ownProps) => {

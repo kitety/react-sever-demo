@@ -12,7 +12,8 @@ const changeList = data => ({
  *
  * @param {*} server 是不是server的运行环境
  */
-export const getNewsLIst = server => {
+export const getNewsLIst = () => {
+  // saxios/caxios判断都不需要了，因为用了redux-thunk的withExtraArgument来传递axios
   // let request = null;
   // if (server) {
   //   request = sAxios;
@@ -20,10 +21,9 @@ export const getNewsLIst = server => {
   //   request = cAxios;
   // }
   // let request = server ? sAxios : cAxios;
-  return dispatch => {
-    //     return axios.get("https://jsonplaceholder.typicode.com/posts").then((result) => {
-    return Axios
-      .get("/posts")
+  //     return axios.get("https://jsonplaceholder.typicode.com/posts").then((result) => {
+  return (dispatch, getState, Axios) => {
+    return Axios.get("/posts")
       .then(result => {
         dispatch(changeList(result.data));
       })
