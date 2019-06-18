@@ -1,5 +1,4 @@
 import React, { Component } from "react"; //=>esModule
-import Header from "../../components/Header";
 import { connect } from "react-redux";
 import { homeActions } from "./store";
 
@@ -14,9 +13,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div>{this.props.name},Welcome To Home</div>
-         {this.props.list.length > 0 && this.getList()}
+        {this.props.list.length > 0 && this.getList()}
         <div>
           <button
             onClick={() => {

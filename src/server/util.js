@@ -5,6 +5,8 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter, Route, matchPath } from "react-router-dom";
 // JSX
 import React from "react";
+// 多级路由的解析
+import { renderRoutes } from "react-router-config";
 import { Provider } from "react-redux";
 
 export const render = (req, store, routes) => {
@@ -15,9 +17,8 @@ export const render = (req, store, routes) => {
       {/* context ssr过程的数据传递  StaticRouter不能感知路径，因此传递路径 */}
       <StaticRouter context={{}} location={req.path}>
         <div>
-          {routes.map(route => (
-            <Route {...route} key={route.path} />
-          ))}
+        {/*这里只会渲染一级路由，，并且会将二级路由传递给一级路由的组件App */}
+          {renderRoutes(routes)}
         </div>
       </StaticRouter>
     </Provider>
