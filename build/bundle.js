@@ -98,6 +98,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./src/common/request.js":
+/*!*******************************!*\
+  !*** ./src/common/request.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar baseURL = \"/api\";\nvar instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  baseURL: baseURL\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (instance);\n\n//# sourceURL=webpack:///./src/common/request.js?");
+
+/***/ }),
+
 /***/ "./src/components/Header.js":
 /*!**********************************!*\
   !*** ./src/components/Header.js ***!
@@ -130,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getNewsLIst\", function() { return getNewsLIst; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index */ \"./src/containers/Home/store/index.js\");\n\n\n\nvar changeList = function changeList(data) {\n  return {\n    type: _index__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].GET_NEWS_LIST,\n    data: data\n  };\n};\n/**\r\n *\r\n * @param {*} server 是不是server的运行环境\r\n */\n\n\nvar getNewsLIst = function getNewsLIst(server) {\n  var url = \"\";\n\n  if (server) {\n    url = \"https://jsonplaceholder.typicode.com/posts\";\n  } else {\n    url = \"/api/posts\";\n  }\n\n  return function (dispatch) {\n    //     return axios.get(\"https://jsonplaceholder.typicode.com/posts\").then((result) => {\n    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (result) {\n      dispatch(changeList(result.data));\n    })[\"catch\"](function (err) {\n      console.log(err);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getNewsLIst\", function() { return getNewsLIst; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index */ \"./src/containers/Home/store/index.js\");\n/* harmony import */ var _common_request__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/request */ \"./src/common/request.js\");\n\n\n // import myAxios from \"../../../client/request\";\n// import sAxios from \"../../../server/request\";\n\nvar changeList = function changeList(data) {\n  return {\n    type: _index__WEBPACK_IMPORTED_MODULE_1__[\"constants\"].GET_NEWS_LIST,\n    data: data\n  };\n};\n/**\r\n *\r\n * @param {*} server 是不是server的运行环境\r\n */\n\n\nvar getNewsLIst = function getNewsLIst(server) {\n  // let request = null;\n  // if (server) {\n  //   request = sAxios;\n  // } else {\n  //   request = cAxios;\n  // }\n  // let request = server ? sAxios : cAxios;\n  return function (dispatch) {\n    //     return axios.get(\"https://jsonplaceholder.typicode.com/posts\").then((result) => {\n    return _common_request__WEBPACK_IMPORTED_MODULE_2__[\"default\"].get(\"/posts\").then(function (result) {\n      dispatch(changeList(result.data));\n    })[\"catch\"](function (err) {\n      console.log(err);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
