@@ -1,6 +1,6 @@
 import React from "react"; //=>esModule
 import { renderRoutes } from "react-router-config";
-import Header from "./components/Header";
+import Header from "./components/Header/";
 
 export default function App(props) {
   return (
