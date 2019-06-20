@@ -30,7 +30,7 @@ app.get("*", (req, res) => {
   // res.send(render(req, res));
   // 在异步里面返回
   // render(req, res)
-  const store = getStore();
+  const store = getStore(req);
   // 根据路由的路径添加数据
   const promises = [];
   const matchedRoutes = matchRoutes(routes, req.path);

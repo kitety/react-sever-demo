@@ -7,10 +7,10 @@ import Axios from "../common/request";
 const reducer = combineReducers({ home: homeReducer, header: headerReducer });
 // 避免所有的都是同一个store
 // const store = createStore(reducer, applyMiddleware(ReduxThunk));
-export const getStore = function() {
+export const getStore = function(req) {
   return createStore(
     reducer,
-    applyMiddleware(ReduxThunk.withExtraArgument(Axios))
+    applyMiddleware(ReduxThunk.withExtraArgument(Axios(req)))
   );
 };
 export const getClientStore = function() {
@@ -20,7 +20,7 @@ export const getClientStore = function() {
   const store = createStore(
     reducer,
     defaultState,
-    applyMiddleware(ReduxThunk.withExtraArgument(Axios))
+    applyMiddleware(ReduxThunk.withExtraArgument(Axios()))
   );
   // 清楚数据
   delete window.context;

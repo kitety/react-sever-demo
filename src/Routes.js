@@ -6,10 +6,12 @@ import App from "./App";
 
 export default [
   {
+    // 这个路径都会走一遍，因此不用谢componentDidMount
     path: "/",
     component: App,
     // 只要带了'/'就返回App
     exact: false,
+    loadData: App.loadData,
     routes: [
       {
         path: "/",

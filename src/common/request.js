@@ -6,8 +6,20 @@ if (typeof window === "undefined") {
 } else {
   baseURL = "/api";
 }
-const instance = axios.create({
-  baseURL
-});
+const instance = (req) =>{
+  if (req) {
+    return axios.create({
+      headers: {
+        cookie: req.get("cookie")||''
+      },
+      baseURL
+    });
+  }else{
+    return axios.create({
+      baseURL
+    });
+
+  }
+}
 
 export default instance;
